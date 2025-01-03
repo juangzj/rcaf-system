@@ -12,14 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class UserDaoImp  implements UserDao{
+public class UserDaoImp implements UserDao {
      @PersistenceContext
       EntityManager entityManager;
 
 
      @Override
+     public void register(User user) {
+          entityManager.merge(user);
+     }
+
+     @Override
      public void createUser(User user) {
-          String query = "INSERT INTO User (name, email, password, use)";
-          entityManager.createQuery(query);
+
      }
 }
