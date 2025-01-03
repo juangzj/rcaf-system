@@ -1,6 +1,6 @@
-package dao;
+package com.rcaf.rcaf.dao;
 
-import models.User;
+import com.rcaf.rcaf.models.User;
 
 public interface UserDao {
 

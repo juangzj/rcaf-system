@@ -1,4 +1,4 @@
-package models;
+package com.rcaf.rcaf.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

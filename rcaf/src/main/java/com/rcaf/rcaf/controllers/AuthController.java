@@ -1,9 +1,9 @@
-package controllers;
+package com.rcaf.rcaf.controllers;
 
-import dao.UserDao;
+import com.rcaf.rcaf.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import models.User;
+import com.rcaf.rcaf.models.User;
 
 @RestController
 @RequestMapping("/")
