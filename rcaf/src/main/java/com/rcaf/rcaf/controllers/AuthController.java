@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.rcaf.rcaf.models.User;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/auth")
 public class AuthController {
     @Autowired
     private UserDao userDao;
@@ -15,16 +15,21 @@ public class AuthController {
      * Mehtod to register a new user
      * @param user
      */
-    @RequestMapping(value = "/auth/register", method = RequestMethod.POST )
+    @RequestMapping(value = "/register", method = RequestMethod.POST )
+    @ResponseBody
     public void register(@RequestBody User user){
-        System.out.println("Endpoint auth/register alcanzado.");
-        userDao.register(user);
+        try {
+            userDao.register(user);
+        }catch (Exception e) {
+            System.err.println("error when registering a user" + e.getMessage());
+        }
     }
 
     /**
      * Method to verify login
      */
-    @RequestMapping(value = "auth/login")
+    @RequestMapping(value = "/login")
+    @ResponseBody
     public void login(){
 
 
