@@ -72,6 +72,13 @@
 			<version>1.18.36</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- argon to hash password -->
+		<dependency>
+			<groupId>de.mkammerer</groupId>
+			<artifactId>argon2-jvm</artifactId>
+			<version>2.5</version>
+		</dependency>
+
 
 	</dependencies>
 

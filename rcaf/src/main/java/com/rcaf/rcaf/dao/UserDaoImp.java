@@ -1,5 +1,7 @@
 package com.rcaf.rcaf.dao;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -7,7 +9,7 @@ import com.rcaf.rcaf.models.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import java.util.List;
 
 
 @Repository
@@ -16,14 +18,37 @@ public class UserDaoImp implements UserDao {
      @PersistenceContext
       EntityManager entityManager;
 
-
+     // create new user query
      @Override
      public void register(User user) {
           entityManager.merge(user);
      }
 
+     // verify user credentials
      @Override
-     public void createUser(User user) {
+     public boolean login(User user) {
+          // query to find a user by email
+          String query = "FROM Users WHERE email = :email";
+          // get user by email and save
+          List<User> list = (List<User>) entityManager.createQuery(query)
+                  .setParameter("email", user.getEmail())
+                  .getResultList();
+
+          //verify if the list is not the same at empty
+          if(list.isEmpty()){
+               return false;
+          }
+
+          String passwordHashed = list.get(0).getPassword(); // get user password from database
+
+          //Verify user password with argon2
+          Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+
+          System.out.println("User logged");
+          return  argon2.verify(passwordHashed, user.getPassword());
+
 
      }
+
+
 }

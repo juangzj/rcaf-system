@@ -4,8 +4,7 @@ import com.rcaf.rcaf.models.User;
 
 public interface UserDao {
 
-    void register(User user);
+    void register(User user);// method to register a new user
 
-
-   void createUser(User User);
+    boolean login (User user);// method to verify user credentials
 }
