@@ -24,8 +24,7 @@ public class User {
     private String password;
     @Getter @Setter @Column( name = "user_type")
     private String user_type;
-    @Getter @Setter @Column( name = "identification")
-    private String identification;
+
     @Getter @Setter @Column( name = "registration_date")
     private Date registration_date;
 

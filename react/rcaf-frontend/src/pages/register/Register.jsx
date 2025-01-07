@@ -1,7 +1,10 @@
 import 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Register.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 import {
   MDBBtn,
   MDBContainer,
@@ -14,7 +17,36 @@ import {
   MDBInput
 } from 'mdb-react-ui-kit';
 
+const registerUserUri = 'http://localhost:8080/auth/register';
+
 function Register() {
+
+  // UseNavigate instance
+  const navigate = useNavigate();
+
+  //User data to create user
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  /**
+   * Method to register a new user
+   */
+  const handleRegisterUser = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post(registerUserUri, { name: name, email: email, password: password, user_type: 'registered' })
+      navigate('/');
+    } catch (error) {
+      console.error(error)
+      alert('Error, the user could not be created')
+    }
+  }
+
+
+
+
   return (
     // Wrapper div to ensure full-height layout and proper alignment
     <div className="register-wrapper d-flex align-items-center justify-content-center">
@@ -47,12 +79,33 @@ function Register() {
                 </h5>
 
                 {/* Input fields for user details */}
-                <MDBInput wrapperClass="mb-4" label="Full Name" id="name-input" type="text" size="lg" />
-                <MDBInput wrapperClass="mb-4" label="Email Address" id="email-input" type="email" size="lg" />
-                <MDBInput wrapperClass="mb-4" label="Password" id="password-input" type="password" size="lg" />
+                <MDBInput
+                  wrapperClass="mb-4"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  label="Full Name"
+                  id="name-input"
+                  type="text"
+                  size="lg" />
+                <MDBInput
+                  wrapperClass="mb-4"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  label="Email Address"
+                  id="email-input"
+                  type="email"
+                  size="lg" />
+                <MDBInput
+                  wrapperClass="mb-4"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  label="Password"
+                  id="password-input"
+                  type="password"
+                  size="lg" />
 
                 {/* Registration button */}
-                <MDBBtn className="register-button mb-4 px-5" color="success" size="lg">Register</MDBBtn>
+                <MDBBtn className="register-button mb-4 px-5" color="success" size="lg" onClick={handleRegisterUser}>Register</MDBBtn>
 
                 {/* Link to redirect to login */}
                 <p className="login-redirect-text mb-5 pb-lg-2" style={{ color: '#4caf50' }}>
