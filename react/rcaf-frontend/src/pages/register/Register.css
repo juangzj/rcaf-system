@@ -1,16 +1,69 @@
-/* Styles for Register Page */
-.register-container {
-  background-color: #f8f9fa;
+/* Wrapper for centering the registration form */
+.register-wrapper {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* Full viewport height */
+  background-color: #ffffff;
+  /* White background */
 }
 
+/* Styling for the registration card */
 .register-card {
-  width: 500px;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: white;
+  max-width: 750px;
+  /* Narrower form width */
+  margin: 0 auto;
+  /* Center the card horizontally */
+  background-color: #f0f8ff;
+  /* Light blue background */
+  border: 1px solid #b0c4de;
+  /* Light blue border */
+  border-radius: 8px;
+  /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+}
+
+/* Registration image styling */
+.register-image {
+  object-fit: cover;
+  /* Ensure the image scales properly */
+  background-color: #e6f0fa;
+  /* Light blue background for the image section */
+}
+
+/* Title styling */
+.register-title {
+  color: #1e90ff;
+  /* Dodger blue for the title */
+}
+
+/* Registration button */
+.register-button {
+  background-color: #1e90ff;
+  /* Dodger blue button */
+  color: #ffffff;
+  /* White text */
+  border: none;
+  transition: background-color 0.3s ease;
+  /* Smooth hover effect */
+}
+
+.register-button:hover {
+  background-color: #4682b4;
+  /* Steel blue on hover */
+}
+
+/* Link and text styling */
+a {
+  color: #1e90ff;
+  /* Dodger blue links */
+}
+
+a:hover {
+  color: #4682b4;
+  /* Steel blue on hover */
+}
+
+.register-redirect-text {
+  color: #1e90ff;
+  /* Dodger blue for text */
 }
