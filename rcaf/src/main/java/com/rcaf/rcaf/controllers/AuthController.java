@@ -1,6 +1,7 @@
 package com.rcaf.rcaf.controllers;
 
 import com.rcaf.rcaf.dao.UserDao;
+import com.rcaf.rcaf.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,10 @@ import com.rcaf.rcaf.models.User;
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
-    private UserDao userDao;
+    private UserDao userDao; // user instance
+
+    @Autowired
+    private JWTUtil jwtUtil; //jwt instance
 
     /**
      * Mehtod to register a new user
@@ -35,11 +39,19 @@ public class AuthController {
     }
 
     /**
-     * Method to verify login
+     * Method to verify login user credentials
      */
     @RequestMapping(value = "/login")
-    public void login(User user){
-        userDao.login(user);
+    public String login(@RequestBody User user){
+
+        User loggedUser = userDao.login(user);// get user if login was successful
+
+        if(loggedUser != null){// verify if user is different of null
+            String token = jwtUtil.create(String.valueOf(loggedUser.getUser_id()), loggedUser.getEmail() ); // create jwt with user credentials
+            return token;
+        }
+
+        return null;
     }
 
 }

@@ -26,9 +26,9 @@ public class UserDaoImp implements UserDao {
 
      // verify user credentials
      @Override
-     public boolean login(User user) {
+     public User login(User user) {
           // query to find a user by email
-          String query = "FROM Users WHERE email = :email";
+          String query = "FROM User WHERE email = :email";
           // get user by email and save
           List<User> list = (List<User>) entityManager.createQuery(query)
                   .setParameter("email", user.getEmail())
@@ -36,7 +36,7 @@ public class UserDaoImp implements UserDao {
 
           //verify if the list is not the same at empty
           if(list.isEmpty()){
-               return false;
+               return null;
           }
 
           String passwordHashed = list.get(0).getPassword(); // get user password from database
@@ -45,7 +45,11 @@ public class UserDaoImp implements UserDao {
           Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
 
           System.out.println("User logged");
-          return  argon2.verify(passwordHashed, user.getPassword());
+
+          if (argon2.verify(passwordHashed, user.getPassword())){
+               return list.get(0);
+          }
+          return null;
 
 
      }
