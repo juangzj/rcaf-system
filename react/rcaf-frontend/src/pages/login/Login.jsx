@@ -49,6 +49,7 @@ function Login() {
         localStorage.setItem('email', email);
 
         // Redirect to the dashboard or main page
+        alert('hola')
         navigate('/dashboard');
       } else {
         // Display an error message if the login fails
