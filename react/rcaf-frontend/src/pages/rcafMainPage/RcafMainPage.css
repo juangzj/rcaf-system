@@ -1,0 +1,244 @@
+.rcaf-main-page {
+  height: 100vh;
+  background-image: url('../../assets/images/Interfaz-pqrs.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.middle-content {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+.middle-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  /* Bold the title */
+  margin-bottom: 15px;
+}
+
+.middle-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.middle-content-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-make-rcaf,
+.btn-follow-rcaf {
+  background-color: transparent;
+  padding: 10px 20px;
+  border: 2px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-make-rcaf {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-follow-rcaf {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-make-rcaf:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-follow-rcaf:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+.rcaf-description {
+  display: flex;
+  flex-direction: row;
+  /* Align text and image side by side */
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+  /* Increase vertical and horizontal padding */
+  background-color: #b1b2b5;
+  /* Set the background color */
+}
+
+.rcaf-description-text {
+  max-width: 600px;
+  /* Limit the width of the text */
+  text-align: center;
+  /* Align text to the left */
+  margin-right: 20px;
+  /* Space between text and image */
+}
+
+.rcaf-description-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.rcaf-description-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.rcaf-description-img {
+  width: 45%;
+  /* Image takes 45% of the container */
+  height: 300px;
+  /* Adjust height to your needs */
+  background-image: url('../../assets/images/rcaf-person.webp');
+  /* Replace with the correct image */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .rcaf-description {
+    flex-direction: column;
+    /* Stack text and image vertically on small screens */
+    align-items: center;
+    padding: 30px;
+    /* Reduced padding for small screens */
+  }
+
+  .rcaf-description-text h1 {
+    font-size: 2rem;
+  }
+
+  .rcaf-description-text p {
+    font-size: 1rem;
+  }
+
+  .rcaf-description-img {
+    width: 100%;
+    /* Make the image full width on small screens */
+    height: 200px;
+    margin-top: 20px;
+    /* Add some spacing above the image */
+  }
+}
+
+/* Main container for information notes */
+.information-notes {
+  background-color: #f4f6f9;
+  /* Light background color */
+  padding: 30px 0;
+  /* Padding only at the top and bottom */
+  margin: 0;
+  /* Remove all margin */
+  width: 100%;
+  /* Full width of the page */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* Soft shadow for depth */
+  display: flex;
+  flex-direction: column;
+  /* Ensures the title is on top and the notes are below */
+  align-items: center;
+  /* Center content horizontally */
+}
+
+/* Title of the section */
+.notes-title h1 {
+  color: #34495e;
+  /* Dark gray for the title */
+  font-size: 28px;
+  /* Larger title font size */
+  text-align: center;
+  /* Center align the title */
+  margin-bottom: 40px;
+  /* Increased margin to give more space below the title */
+  padding: 10px 0;
+  /* Add padding above and below the title for extra space */
+}
+
+/* Flex container for the notes */
+.notes-container {
+  display: flex;
+  /* Using Flexbox for horizontal layout */
+  justify-content: space-between;
+  /* Evenly distribute space between notes */
+  gap: 20px;
+  /* Space between notes */
+  width: 100%;
+  /* Ensures the notes take up full width */
+  flex-wrap: wrap;
+  /* Allows notes to wrap to the next line on smaller screens */
+  padding: 0 20px;
+  /* Adds padding to left and right for some spacing */
+}
+
+/* Individual note styling */
+.note {
+  background-color: #ffffff;
+  /* White background for each note */
+  padding: 20px;
+  /* Padding inside each note */
+  width: 23%;
+  /* Each note takes 23% of the width (4 notes per row) */
+  border-radius: 8px;
+  /* Rounded corners for each note */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Light shadow on notes */
+  border-left: 5px solid #3498db;
+  /* Blue border on the left side */
+}
+
+/* Heading style inside each note */
+.note h2 {
+  color: #2980b9;
+  /* Blue color for subheadings */
+  font-size: 20px;
+  /* Font size for subheadings */
+  margin-bottom: 10px;
+  /* Space below each heading */
+}
+
+/* Paragraph text style inside each note */
+.note p {
+  color: #7f8c8d;
+  /* Light gray color for paragraph text */
+  font-size: 16px;
+  /* Font size for paragraphs */
+  line-height: 1.6;
+  /* Line height for better readability */
+  margin-bottom: 0;
+  /* No bottom margin */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .note {
+    width: 48%;
+    /* Two notes per row for medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .note {
+    width: 100%;
+    /* One note per row for small screens */
+  }
+}
