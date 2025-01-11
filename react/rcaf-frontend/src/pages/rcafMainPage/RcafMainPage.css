@@ -78,7 +78,8 @@
   justify-content: space-between;
   padding: 60px;
   /* Increase vertical and horizontal padding */
-  background-color: #b1b2b5;
+  background-color: #f4f6f9;
+  ;
   /* Set the background color */
 }
 
@@ -143,7 +144,7 @@
 
 /* Main container for information notes */
 .information-notes {
-  background-color: #f4f6f9;
+  background-color: #b1b2b5;
   /* Light background color */
   padding: 30px 0;
   /* Padding only at the top and bottom */
@@ -240,5 +241,112 @@
   .note {
     width: 100%;
     /* One note per row for small screens */
+  }
+}
+
+.make-rcaf-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 columns for larger screens */
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  grid-column: span 3;
+  /* Ensures the title spans the entire row */
+}
+
+.rcaf-card-request,
+.rcaf-card-complaint,
+.rcaf-card-claim,
+.rcaf-card-suggestion,
+.rcaf-card-congratulation,
+.rcaf-card-questions {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rcaf-card-request:hover,
+.rcaf-card-complaint:hover,
+.rcaf-card-claim:hover,
+.rcaf-card-suggestion:hover,
+.rcaf-card-congratulation:hover,
+.rcaf-card-questions:hover {
+  transform: translateY(-5px);
+  /* Hover effect: moves the card upwards */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  /* Adds a stronger shadow on hover */
+}
+
+h2 {
+  color: #333;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  /* Hover effect: darker blue */
+}
+
+button:focus {
+  outline: none;
+  /* Removes the focus outline */
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 1024px) {
+  .make-rcaf-container {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns for medium screens like tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .make-rcaf-container {
+    grid-template-columns: 1fr;
+    /* 1 column for small screens like mobile devices */
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    /* Adjusts title size for smaller screens */
+  }
+
+  .rcaf-card-request,
+  .rcaf-card-complaint,
+  .rcaf-card-claim,
+  .rcaf-card-suggestion,
+  .rcaf-card-congratulation,
+  .rcaf-card-questions {
+    padding: 15px;
+    /* Reduces padding for smaller screens */
+    margin-bottom: 20px;
+    /* Adds space between cards in smaller screens */
   }
 }
