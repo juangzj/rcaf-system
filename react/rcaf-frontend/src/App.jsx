@@ -4,6 +4,7 @@ import Login from './pages/login/login';
 import Register from './pages/register/Register';
 import RcafMainPage from './pages/rcafMainPage/RcafMainPage';
 import Navbar from './components/navbar/Navbar';
+import InsideNavbar from './components/insideNavbar/insideNavbar';
 
 
 
@@ -22,6 +23,12 @@ function App() {
           } ></Route>
           <Route path='/login' element={<Login />} ></Route>
           <Route path='/register' element={<Register />} ></Route>
+          <Route path="/dashboard" element={
+            <InsideNavbar></InsideNavbar>
+
+
+          }>
+          </Route>
 
         </Routes>
       </Router>

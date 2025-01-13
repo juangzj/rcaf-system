@@ -1,0 +1,92 @@
+/* General styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  /* Light background for contrast */
+}
+
+/* Navbar */
+.inside-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Semi-transparent white background */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Light shadow for better definition */
+  backdrop-filter: blur(10px);
+  /* Adds blur effect to background */
+}
+
+/* Wrapper for navbar content */
+.inside-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo or title */
+.inside-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  /* Dark text color */
+  text-decoration: none;
+  /* Removes underline */
+}
+
+/* Navigation menu container */
+.inside-navigation-menu {
+  display: flex;
+  align-items: center;
+}
+
+/* Log out button */
+.logout {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #000;
+  /* Black background */
+  color: #fff;
+  /* White text */
+}
+
+/* Hover effect for log out button */
+.logout:hover {
+  background-color: #333;
+  /* Darker black on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .inside-wrapper {
+    flex-direction: column;
+    /* Stacks logo and menu vertically */
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .inside-navigation-menu {
+    margin-top: 10px;
+    width: 100%;
+    /* Full width for navigation menu */
+    text-align: right;
+    /* Align buttons to the right */
+  }
+
+  .logout {
+    width: 100%;
+    /* Makes button full width */
+    text-align: center;
+  }
+}

@@ -109,7 +109,7 @@ function Register() {
 
                 {/* Link to redirect to login */}
                 <p className="login-redirect-text mb-5 pb-lg-2" style={{ color: '#4caf50' }}>
-                  Already have an account? <Link to="/" style={{ color: '#4caf50' }}>Log in here</Link>
+                  Already have an account? <Link to="/login" style={{ color: '#4caf50' }}>Log in here</Link>
                 </p>
 
                 {/* Footer links for terms and privacy */}
