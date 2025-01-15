@@ -1,6 +1,6 @@
 package com.rcaf.rcaf.controllers;
 
-import com.rcaf.rcaf.dao.UserDao;
+import com.rcaf.rcaf.dao.AuthDao;
 import com.rcaf.rcaf.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -12,7 +12,7 @@ import com.rcaf.rcaf.models.User;
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
-    private UserDao userDao; // user instance
+    private AuthDao userDao; // user instance
 
     @Autowired
     private JWTUtil jwtUtil; //jwt instance
@@ -22,7 +22,6 @@ public class AuthController {
      * @param user
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST )
-
     public void register(@RequestBody User user){
         try {
             // argon instance

@@ -24,9 +24,9 @@ function LeftSidebar() {
       </button>
       <aside className="left-sidebar">
         <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/services">Services</Link></li>
+          <li><Link to="/usersDashboard">Users</Link></li>
+          <li><Link to="/about">RCAFs</Link></li>
+          <li><Link to="/dashboard">Services</Link></li>
         </ul>
         <button className="logout-button" onClick={handleLogOut} >Log Out</button>
       </aside>
