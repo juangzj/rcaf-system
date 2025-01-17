@@ -78,7 +78,7 @@ public class JWTUtil {
                 .parseClaimsJws(jwt)
                 .getBody();
 
-        return claims.getSubject();
+        return claims.getSubject().trim();
     }
 
     /**
@@ -94,6 +94,6 @@ public class JWTUtil {
                 .parseClaimsJws(jwt)
                 .getBody();
 
-        return claims.getId();
+        return claims.getId().trim();
     }
 }

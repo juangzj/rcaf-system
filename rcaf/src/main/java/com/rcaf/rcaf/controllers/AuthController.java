@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.rcaf.rcaf.models.User;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -26,10 +30,14 @@ public class AuthController {
         try {
             // argon instance
             Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+            //Local Date Instance
+            LocalDate currentDate = LocalDate.now();
             //hashing user password
             String hash = argon2.hash(1,1024, 1, user.getPassword());
             // set user password
             user.setPassword(hash);
+            //set user registration date
+            user.setRegistration_date(Date.valueOf(currentDate));
             // register new user
             userDao.register(user);
         }catch (Exception e) {
