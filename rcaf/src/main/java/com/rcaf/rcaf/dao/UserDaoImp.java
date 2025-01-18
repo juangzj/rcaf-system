@@ -23,4 +23,21 @@ public class UserDaoImp implements UserDao {
         String query = "From User";
         return entityManager.createQuery(query).getResultList();
     }
+
+    /**
+     * Method to delete an user by id
+     * @param user_id
+     * @return
+     */
+    @Override
+    public boolean deleteUser(int user_id) {
+        try {
+            User user = entityManager.find(User.class, user_id);
+            entityManager.remove(user);
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }

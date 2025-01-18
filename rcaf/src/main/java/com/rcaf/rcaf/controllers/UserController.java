@@ -4,10 +4,7 @@ import com.rcaf.rcaf.dao.UserDao;
 import com.rcaf.rcaf.models.User;
 import com.rcaf.rcaf.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +33,19 @@ public class UserController {
             //return new ArrayList<>();
         }
         return userDao.getAllUsers();
+    }
+
+    @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.DELETE)
+    public String deleteUser(@RequestHeader(value = "Authorization") String token,@PathVariable("id") int id){
+        String userId = jwtUtil.getKey((token));
+
+        boolean userDeleted = userDao.deleteUser(id);
+
+        if(userDeleted){
+            return "deleted";
+        }else{
+            return "fail";
+        }
     }
 
 }

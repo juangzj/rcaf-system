@@ -1,37 +1,78 @@
 import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import EliminationConfirmationModal from '../../components/confirmationModal/EliminationConfirmationModal';
 
-const getAllUsersUri = 'http://localhost:8080/users/getAllUsers';
+// API endpoints
+const getAllUsersUri = 'http://localhost:8080/users/getAllUsers'; // URI to fetch all users
+const deleteUserUri = 'http://localhost:8080/users/deleteUser';   // URI to delete a user
 
 const UsersTableDashboard = () => {
+  // State to store users data
   const [users, setUsers] = useState([]);
+  // State to handle loading state
   const [loading, setLoading] = useState(true);
+  // State to store error messages
   const [error, setError] = useState(null);
+  // State to control the visibility of the delete confirmation modal
+  const [eliminationModalVisible, setEliminationModalVisible] = useState(false);
+  // State to store the ID of the selected user for deletion
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
-  const getAllUsers = async () => {
+  // Handle user delete button click
+  const handleUserDeleteClick = (userId) => {
+    setSelectedUserId(userId);
+    setEliminationModalVisible(true);
+  };
+
+  // Function to confirm user deletion
+  const handleConfirmDelete = async () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('Token not found');
+      const headers = {
+        Authorization: token,
+      };
+      await axios.delete(`${deleteUserUri}/${selectedUserId}`, { headers });
+      // Update the users list after deletion
+      setUsers(users.filter((user) => user.user_id !== selectedUserId));
+      setEliminationModalVisible(false);
+    } catch (error) {
+      console.error('Failed to delete user:', error);
+    }
+  };
+
+  // Function to close the deletion confirmation modal
+  const handleCloseEliminationModal = () => {
+    setEliminationModalVisible(false);
+  };
+
+  // Function to fetch all users from the backend
+  const getAllUsers = async () => {
+    try {
+      const token = localStorage.getItem('token'); // Retrieve token from localStorage
+      if (!token) throw new Error('Token not found'); // Check if token exists
 
       const headers = {
         Authorization: token,
       };
 
       const res = await axios.get(getAllUsersUri, { headers });
-      setUsers(res.data);
+      setUsers(res.data); // Set the fetched users to state
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to fetch users');
-      console.error(error);
+      console.error('Error fetching users:', error);
     } finally {
       setLoading(false);
     }
   };
 
+  // Fetch all users on component mount
   useEffect(() => {
     getAllUsers();
   }, []);
 
+  // Render a loading message while fetching data
   if (loading) {
     return <div className="text-center mt-5">Loading...</div>;
   }
@@ -60,14 +101,14 @@ const UsersTableDashboard = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.user_type}</td>
-                  <td>{user.registration_date ? user.registration_date : '-'}</td>
+                  <td>{user.registration_date || '-'}</td>
                   <td>
-                    <button className="btn btn-primary btn-sm me-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
-                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                    </svg></button>
-                    <button className="btn btn-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3-fill" viewBox="0 0 16 16">
-                      <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
-                    </svg></button>
+                    <button
+                      onClick={() => handleUserDeleteClick(user.user_id)}
+                      className="btn btn-danger btn-sm"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))
@@ -81,6 +122,12 @@ const UsersTableDashboard = () => {
           </tbody>
         </table>
       </div>
+      <EliminationConfirmationModal
+        eliminationShow={eliminationModalVisible} // Nombre de prop corregido
+        eliminationOnClose={handleCloseEliminationModal}
+        eliminationOnConfirm={handleConfirmDelete}
+        eliminationMessage="Are you sure you want to delete this user?"
+      />
     </div>
   );
 };
