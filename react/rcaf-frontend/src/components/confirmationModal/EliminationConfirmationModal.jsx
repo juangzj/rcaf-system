@@ -6,7 +6,7 @@ const EliminationConfirmationModal = ({
   eliminationShow,
   eliminationOnClose,
   eliminationOnConfirm,
-  eliminationMessage = 'Are you sure?', // Establece el valor predeterminado aquí
+  eliminationMessage = 'Are you sure?',
 }) => {
   return eliminationShow ? (
     <div className="elimination-modal-overlay">

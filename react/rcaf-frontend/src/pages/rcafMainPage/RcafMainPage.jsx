@@ -1,8 +1,22 @@
-import 'react';
+
 import './RcafMainPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
+import AskRacafModal from '../../components/askRcafModal/AskRcafModal';
 
-function RcafMainPage() {
+const RcafMainPage = () => {
+
+  const [isAskRcafModalVisible, setIsAskRcafModalVisible] = useState(false); // ask modal state to show it
+
+  // Open ask modal 
+  const handleAksRcafModalOpen = () => {
+    setIsAskRcafModalVisible(true);
+  }
+  // Close ask modal
+  const handleAksRcafModalClose = () => {
+    setIsAskRcafModalVisible(false);
+  }
+
   return (
     <div>
       <div className="rcaf-main-page">
@@ -12,7 +26,7 @@ function RcafMainPage() {
             Welcome to our RACF system. Here you can register your requests, complaints, claims, or suggestions to help us improve and offer you a better experience. Complete the required fields and send us your request.
           </p>
           <div className="middle-content-buttons">
-            <button className="btn-make-rcaf">Make RCAF</button>
+            <button className="btn-make-rcaf" onClick={handleAksRcafModalOpen}>Make RCAF</button>
             <button className="btn-follow-rcaf">Follow RCAF</button>
           </div>
         </div>
@@ -81,6 +95,16 @@ function RcafMainPage() {
           <p>Questions the user wants to ask or seek clarification about.</p>
           <button>Ask a question</button>
         </div>
+      </div>
+      <div>
+        {/**Ask rcaf modal */}
+        {isAskRcafModalVisible && (
+          <div>
+            <div className="ask-rcaf-modal-overlay-show" onClick={handleAksRcafModalClose}></div>
+            <AskRacafModal />
+          </div>
+        )}
+
       </div>
 
     </div>

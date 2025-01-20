@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import EliminationConfirmationModal from '../../components/confirmationModal/EliminationConfirmationModal';
+import './UserTableDashboard.css'
 
 // API endpoints
 const getAllUsersUri = 'http://localhost:8080/users/getAllUsers'; // URI to fetch all users
@@ -123,7 +124,7 @@ const UsersTableDashboard = () => {
         </table>
       </div>
       <EliminationConfirmationModal
-        eliminationShow={eliminationModalVisible} // Nombre de prop corregido
+        eliminationShow={eliminationModalVisible}
         eliminationOnClose={handleCloseEliminationModal}
         eliminationOnConfirm={handleConfirmDelete}
         eliminationMessage="Are you sure you want to delete this user?"
