@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import AskRacafModal from '../../components/askRcafModal/AskRcafModal';
 
+
 const RcafMainPage = () => {
 
   const [isAskRcafModalVisible, setIsAskRcafModalVisible] = useState(false); // ask modal state to show it
@@ -68,32 +69,32 @@ const RcafMainPage = () => {
         <div className="rcaf-card-request">
           <h2>Request</h2>
           <p>Formal request for information, services or specific actions that the user needs.</p>
-          <button>Make a request</button>
+          <button onClick={handleAksRcafModalOpen}>Make a request</button>
         </div>
         <div className="rcaf-card-complaint">
           <h2>Complaint</h2>
           <p>Formal complaint regarding any issue or concern the user wishes to address.</p>
-          <button>Make a complaint</button>
+          <button onClick={handleAksRcafModalOpen}>Make a complaint</button>
         </div>
         <div className="rcaf-card-claim">
           <h2>Claim</h2>
           <p>Claim related to a service, product, or issue that the user wants to report.</p>
-          <button>Make a claim</button>
+          <button onClick={handleAksRcafModalOpen}>Make a claim</button>
         </div>
         <div className="rcaf-card-suggestion">
           <h2>Suggestion</h2>
           <p>Suggestions for improvements or ideas the user wants to propose.</p>
-          <button>Make a suggestion</button>
+          <button onClick={handleAksRcafModalOpen}>Make a suggestion</button>
         </div>
         <div className="rcaf-card-congratulation">
           <h2>Congratulation</h2>
           <p>Congratulations on achievements, milestones, or positive events to celebrate.</p>
-          <button>Send a congratulation</button>
+          <button onClick={handleAksRcafModalOpen}>Send a congratulation</button>
         </div>
         <div className="rcaf-card-questions">
           <h2>Questions</h2>
           <p>Questions the user wants to ask or seek clarification about.</p>
-          <button>Ask a question</button>
+          <button onClick={handleAksRcafModalOpen}>Ask a question</button>
         </div>
       </div>
       <div>

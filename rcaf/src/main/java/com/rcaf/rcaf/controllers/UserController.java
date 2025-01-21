@@ -35,6 +35,12 @@ public class UserController {
         return userDao.getAllUsers();
     }
 
+    /**
+     * Method to delete an user by id
+     * @param token
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.DELETE)
     public String deleteUser(@RequestHeader(value = "Authorization") String token,@PathVariable("id") int id){
         String userId = jwtUtil.getKey((token));
