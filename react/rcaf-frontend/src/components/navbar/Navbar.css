@@ -31,7 +31,7 @@ body {
   width: 100%;
 }
 
-/* Logo or title */
+/* Brand (logo or title) */
 .brand {
   font-size: 1.5rem;
   font-weight: bold;
@@ -84,4 +84,22 @@ body {
 .signup-button:hover {
   background-color: #333;
   /* Darker black on hover */
+}
+
+/* Logout button */
+.logout-button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #f44336;
+  /* Red */
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+  /* Darker red on hover */
 }

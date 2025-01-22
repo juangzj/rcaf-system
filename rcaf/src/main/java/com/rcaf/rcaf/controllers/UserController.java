@@ -36,7 +36,7 @@ public class UserController {
     }
 
     /**
-     * Method to delete an user by id
+     * Method to delete a user by id
      * @param token
      * @param id
      * @return

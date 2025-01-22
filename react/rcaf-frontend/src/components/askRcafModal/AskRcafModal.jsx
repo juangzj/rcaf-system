@@ -10,7 +10,7 @@ const AskRacafModal = () => {
           Submit your RCAF anonymously. Upon completion, a unique code will be
           generated, enabling you to track the status of your request securely.
         </p>
-        <Link to={"/"}>Submit Anonymously</Link>
+        <Link to={"/user/rcafFomr"}>Submit Anonymously</Link>
       </div>
       <div className="ask-rcaf-modal-bottom">
         <h1 className="ask-rcaf-modal-bottom-title">Submit with an Account</h1>

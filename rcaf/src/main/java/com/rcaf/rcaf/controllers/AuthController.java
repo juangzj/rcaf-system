@@ -10,6 +10,8 @@ import com.rcaf.rcaf.models.User;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @RestController
@@ -49,15 +51,19 @@ public class AuthController {
      * Method to verify login user credentials
      */
     @RequestMapping(value = "/login")
-    public String login(@RequestBody User user){
+    public Map<String, Object> login(@RequestBody User user){
 
         User loggedUser = userDao.login(user);// get user if login was successful
 
         if(loggedUser != null){// verify if user is different of null
             String token = jwtUtil.create(String.valueOf(loggedUser.getUser_id()), loggedUser.getEmail() ); // create jwt with user credentials
-            return token;
-        }
 
+            // create response map with token and user role
+            Map<String, Object> response = new HashMap<>();
+            response.put("token", token);
+            response.put("user_type", loggedUser.getUser_type());
+            return  response;
+        }
         return null;
     }
 

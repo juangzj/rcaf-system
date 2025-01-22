@@ -44,12 +44,22 @@ function Login() {
 
       // Check if the response contains a valid token
       if (response.data) {
+        const { token, user_type } = response.data;// Destructure role and token from response
+
+        alert(`El usuario es ${user_type}`)
+
         // Store the token and email in localStorage
-        localStorage.setItem('token', response.data);
+        localStorage.setItem('token', token);
         localStorage.setItem('email', email);
 
-        // Redirect to the dashboard or main page
-        navigate('/dashboard');
+        //redirec based on user role
+        if (user_type === 'admin') {
+          navigate('/admin/dashboard')
+        } else if (user_type === 'registered') {
+          navigate('/user/dashboard')
+        }
+
+
       } else {
         // Display an error message if the login fails
         setErrorMessage('Invalid credentials. Please try again.');

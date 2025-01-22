@@ -25,7 +25,7 @@ public class UserDaoImp implements UserDao {
     }
 
     /**
-     * Method to delete an user by id
+     * Method to delete a user by id
      * @param user_id
      * @return
      */

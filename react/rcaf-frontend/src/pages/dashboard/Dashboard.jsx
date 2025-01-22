@@ -13,7 +13,7 @@ function Dashboard() {
             <p className="dashboard-cards-description">
               Manage user profiles, view their activity, and control access permissions to ensure secure and efficient usage of the platform.
             </p>
-            <Link to="/usersDashboard">
+            <Link to="/admin/usersDashboard">
               <button>Go</button>
             </Link>
           </div>
@@ -22,7 +22,7 @@ function Dashboard() {
             <p className="dashboard-cards-description">
               Access, update, and manage RCAF records efficiently. Review historical data and ensure accuracy for better decision-making.
             </p>
-            <Link to="/rcafs">
+            <Link to="/admin/rcafs">
               <button>Go</button>
             </Link>
           </div>
@@ -31,7 +31,7 @@ function Dashboard() {
             <p className="dashboard-cards-description">
               Customize your experience by updating application settings, managing notifications, and tailoring the dashboard to your preferences.
             </p>
-            <Link to="/options">
+            <Link to="/admin/options">
               <button>Go</button>
             </Link>
           </div>
