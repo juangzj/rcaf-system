@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer';
 import Dashboard from './pages/dashboard/Dashboard';
 import UsersTableDashboard from './pages/usersTableDashboard/UsersTableDashboard';
 import RcarFormPage from './pages/rcafFormPage/RcafFormPage';
+import InsideNavbar from './components/insideNavbar/InsideNavbar'
 
 
 
@@ -53,6 +54,13 @@ function App() {
               <Navbar></Navbar>
               <RcarFormPage></RcarFormPage>
             </>
+          }></Route>
+          <Route path='/user/dashboard' element={
+            <>
+              <InsideNavbar></InsideNavbar>
+
+            </>
+
           }></Route>
 
 

@@ -11,7 +11,7 @@ function InsideNavbar() {
           <Link to="#" className="inside-logo">RCAF</Link>
           <div className="inside-navigation-menu">
             {/* Action buttons */}
-            <Link to="/" className="logout">Log out</Link>
+            <Link to="/" className="logout-inside-navbar">Log out</Link>
           </div>
         </div>
       </nav>

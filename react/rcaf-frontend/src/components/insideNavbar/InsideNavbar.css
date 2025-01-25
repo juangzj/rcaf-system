@@ -21,6 +21,8 @@ body {
   /* Light shadow for better definition */
   backdrop-filter: blur(10px);
   /* Adds blur effect to background */
+  z-index: 1000;
+  /* Ensures navbar stays on top of other content */
 }
 
 /* Wrapper for navbar content */
@@ -39,32 +41,89 @@ body {
   /* Dark text color */
   text-decoration: none;
   /* Removes underline */
+  margin-left: 100px;
+  /* Adds spacing to the right */
 }
 
 /* Navigation menu container */
 .inside-navigation-menu {
   display: flex;
   align-items: center;
+  gap: 20px;
+  /* Adds space between the buttons */
 }
 
-/* Log out button */
-.logout {
+/* General button styles */
+.button {
   padding: 8px 16px;
-  font-size: 1rem;
+  /* Fixed padding */
+  font-size: 0.9rem;
   border-radius: 4px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+/* Login button */
+.inside-login {
+  background-color: transparent;
+  /* Transparent background */
+  border: 2px solid #000;
+  /* Black border */
+  color: #000;
+  /* Black text */
+  padding: 8px 16px;
+  /* Consistent padding */
+  font-size: 1rem;
+  /* Consistent font size */
+  border-radius: 4px;
+  /* Rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+/* Sign Up button */
+.inside-signup {
   background-color: #000;
   /* Black background */
   color: #fff;
   /* White text */
+  text-decoration: none;
+  /* Removes underline */
+  padding: 8px 16px;
+  /* Adjust padding */
+  border-radius: 4px;
+  /* Rounded corners */
+  transition: background-color 0.3s ease;
 }
 
-/* Hover effect for log out button */
-.logout:hover {
+/* Hover effects */
+.inside-login:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  /* Light black on hover */
+  color: #000;
+}
+
+.inside-signup:hover {
   background-color: #333;
-  /* Darker black on hover */
+  /* Slightly darker black on hover */
+}
+
+/* Logout button */
+.logout-inside-navbar {
+  background-color: #f44336;
+  /* Red background */
+  color: #fff;
+  /* White text */
+  padding: 8px 16px;
+  border-radius: 4px;
+  /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-inside-navbar:hover {
+  background-color: #d32f2f;
+  /* Darker red on hover */
 }
 
 /* Responsive design */
@@ -84,9 +143,11 @@ body {
     /* Align buttons to the right */
   }
 
-  .logout {
+  .button {
     width: 100%;
-    /* Makes button full width */
+    /* Makes buttons full width on smaller screens */
     text-align: center;
+    margin-bottom: 5px;
+    /* Adds margin between buttons */
   }
 }

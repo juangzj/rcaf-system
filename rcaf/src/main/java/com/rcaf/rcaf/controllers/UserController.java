@@ -25,7 +25,7 @@ public class UserController {
      */
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
     public List<User> getAllUsers(@RequestHeader(value = "Authorization") String token) {
-        System.out.println("EL TOKEN ES: " + token);
+        //System.out.println("EL TOKEN ES: " + token);
         String userId = jwtUtil.getKey(token.replaceAll("\\s+", ""));
 
 
