@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 @Transactional(propagation = Propagation.REQUIRED)
 @Repository
@@ -51,5 +52,21 @@ public class RequestDaoImp implements RequestDao {
             System.out.println("algo malio sal " + e.getMessage());
             return false; // Return false if something went wrong
         }
+    }
+
+    /**
+     * Method to get all users Rcafs by user id
+     * @param user_id - The user id
+     * @return
+     */
+    @Override
+    public List<Requests> getRcafsByUserId(int user_id) {
+        //create query to get all users rcafs
+        String query = "SELECT r FROM Requests r WHERE r.user_id = :user_id ";
+
+        //Execute query to return Rcfas list
+        return entityManager.createQuery(query, Requests.class)
+                .setParameter("user_id", user_id)
+                .getResultList();
     }
 }

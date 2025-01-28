@@ -1,6 +1,7 @@
 package com.rcaf.rcaf.controllers;
 
 import com.rcaf.rcaf.dao.RequestDao;
+import com.rcaf.rcaf.models.Requests;
 import com.rcaf.rcaf.utils.UniqueCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -47,6 +49,12 @@ public class RequestsController {
             response.put("message", "Failed to create RCAF.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+    }
+
+    public ResponseEntity<List<Requests>> getAllUserRcafsById(){
+
+
+
     }
 
 
